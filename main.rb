@@ -9,14 +9,12 @@ camilo = Player.new("Camilo", "O")
 
 board = Board.new
 
-p "-------"
 pp board.grid
-p "-------"
-board.set_cell(carlos, "A2")
-p "-------"
 board.set_cell(carlos, "A1")
-board.set_cell(carlos, "A2")
-board.set_cell(carlos, "A3")
+board.set_cell(carlos, "B1")
+board.set_cell(camilo, "C2")
+# board.set_cell(carlos, "A2")
+# board.set_cell(camilo, "A3")
 
 
 
