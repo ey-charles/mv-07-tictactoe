@@ -36,7 +36,7 @@ class Board
   def winner?
     p check_horizontal_win?
     p check_vertical_win?
-    # if check_horizontal_win? || check_vertical_win? || check_diagonal_win?
+    p check_diagonal_win?
     #   return true
     # end; return false
   end
@@ -63,15 +63,13 @@ class Board
     return false
   end
 
-  # def check_diagonal_win?
-  #   if !@grid["A1"].value.empty? && @grid["A1"].value == @grid["B2"].value && @grid["B2"].value == @grid["C3"].value
-  #     return true
-  #   elsif !@grid["C1"].value.empty? && @grid["C1"].value == @grid["B2"].value && @grid["B2"].value == @grid["A3"].value
-  #     return true
-  #   else
-  #     return false
-  #   end
-  # end
+  def check_diagonal_win?
+    diag1 = @grid.slice("A1", "B2", "C3").values
+    diag2 = @grid.slice("C1", "B2", "A3").values
+    return false unless diag1.all? || diag2.all?
+    return true if diag1.all? { |element| element == diag1[0] }
+    return true if diag2.all? { |element| element == diag2[0] }
+  end
 
   def show_board
     %w[1 2 3].each { |i| p @grid.select { |k| k.include? i }.values }

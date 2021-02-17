@@ -11,10 +11,10 @@ board = Board.new
 
 pp board.grid
 board.set_cell(carlos, "A1")
-board.set_cell(carlos, "A2")
-board.set_cell(carlos, "A3")
-# board.set_cell(carlos, "A2")
-# board.set_cell(camilo, "A3")
+board.set_cell(camilo, "B3")
+board.set_cell(carlos, "B2")
+board.set_cell(camilo, "A2")
+board.set_cell(carlos, "C3")
 
 
 
