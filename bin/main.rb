@@ -1,16 +1,15 @@
 require 'pp'
-require_relative "lib/board"
-require_relative "lib/game"
-require_relative "lib/player"
+require_relative "../lib/board"
+require_relative "../lib/game"
+require_relative "../lib/player"
 
-# carlos = Player.new("Carlos", "X")
-# camilo = Player.new("Camilo", "O")
+game = Game.new
+game.add_player("Carlos", "X")
+game.add_player("Camilo", "O")
 
-# board = Board.new
-
-# pp board.grid
-# board.set_cell(carlos, "A1")
-# board.set_cell(carlos, "A2")
-# board.set_cell(carlos, "A3")
-
-
+game.new_turn("Carlos", "A2")
+game.new_turn("Camilo", "B3")
+game.new_turn("Carlos", "A1")
+game.new_turn("Camilo", "B1")
+game.new_turn("Carlos", "A3")
+game.show_board

@@ -26,15 +26,20 @@ class Board
     end
 
     @grid[cell_id] = player.token
-    p "#{player.name} marked the cell #{cell_id} with his/her token: #{player.token}."
 
-    show_board
+    p "#{player.name} marked the cell #{cell_id}: #{player.token}."
 
-    p winner? 
+    winner?
   end
 
   def winner?
     return check_horizontal_win? || check_vertical_win? || check_diagonal_win? ? true : false;
+  end
+
+  public
+
+  def show_board
+    %w[1 2 3].each { |i| p @grid.select { |k| k.include? i }.values }
   end
 
   private
@@ -66,9 +71,5 @@ class Board
 
     return true if diag1.all? { |element| element == diag1[0] }
     return true if diag2.all? { |element| element == diag2[0] }
-  end
-
-  def show_board
-    %w[1 2 3].each { |i| p @grid.select { |k| k.include? i }.values }
   end
 end
