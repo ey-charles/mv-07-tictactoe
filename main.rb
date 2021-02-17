@@ -14,5 +14,11 @@ pp board.grid
 p "-------"
 board.set_cell(carlos, "A2")
 p "-------"
+board.set_cell(carlos, "A1")
 board.set_cell(carlos, "A2")
+board.set_cell(carlos, "A3")
+
+
+
+
 
