@@ -30,35 +30,30 @@ class Board
 
     show_board
 
-    winner? 
+    p winner? 
   end
 
   def winner?
-    p check_horizontal_win?
-    p check_vertical_win?
-    p check_diagonal_win?
-    #   return true
-    # end; return false
+    return check_horizontal_win? || check_vertical_win? || check_diagonal_win? ? true : false;
   end
 
   private
 
   def check_horizontal_win?
-    %w[1 2 3].each { |i|
-      row = @grid.select { |k| k.include? i }.values
-      next unless row.all?
-      return true if row.all? { |element| element == row[0] }
-    }
-    # We have no winner if we get to this point
-    return false
+    check_linear_win?(%w[1 2 3])
   end
 
   def check_vertical_win?
-    %w[A B C].each { |i|
-      column = @grid.select { |k| k.include? i }.values
-      next unless column.all?
-      return true if column.all? { |element| element == column[0] }
+    check_linear_win?(%w[A B C])
+  end
+
+  def check_linear_win?(matrix)
+    matrix.each { |i|
+      vector = @grid.select { |k| k.include? i }.values
+      next unless vector.all?
+      return true if vector.all? { |element| element == vector[0] }
     }
+
     # We have no winner if we get to this point
     return false
   end
@@ -66,7 +61,9 @@ class Board
   def check_diagonal_win?
     diag1 = @grid.slice("A1", "B2", "C3").values
     diag2 = @grid.slice("C1", "B2", "A3").values
+
     return false unless diag1.all? || diag2.all?
+
     return true if diag1.all? { |element| element == diag1[0] }
     return true if diag2.all? { |element| element == diag2[0] }
   end
