@@ -28,21 +28,26 @@ class Board
     @grid[cell_id] = player.token
     p "#{player.name} marked the cell #{cell_id} with his/her token: #{player.token}."
 
-    p "---" if winner?
-    
+    show_board
+
+    winner? 
   end
 
   def winner?
-    check_horizontal_win?
+    p check_horizontal_win?
+    p check_vertical_win?
     # if check_horizontal_win? || check_vertical_win? || check_diagonal_win?
     #   return true
     # end; return false
   end
 
+  private
+
   def check_horizontal_win?
     %w[1 2 3].each { |i|
-      row = @grid.select { |k| k.include? i }
-      return true if row.compact.values.uniq.length == 1
+      row = @grid.select { |k| k.include? i }.values
+      next unless row.all?
+      return true if row.all? { |element| element == row[0] }
     }
     # We have no winner if we get to this point
     return false
@@ -50,8 +55,9 @@ class Board
 
   def check_vertical_win?
     %w[A B C].each { |i|
-      row = @grid.select { |k| k.include? i }
-      return true if row.compact.values.uniq.length == 1
+      column = @grid.select { |k| k.include? i }.values
+      next unless column.all?
+      return true if column.all? { |element| element == column[0] }
     }
     # We have no winner if we get to this point
     return false
@@ -66,4 +72,8 @@ class Board
   #     return false
   #   end
   # end
+
+  def show_board
+    %w[1 2 3].each { |i| p @grid.select { |k| k.include? i }.values }
+  end
 end
