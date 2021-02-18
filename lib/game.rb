@@ -28,8 +28,8 @@ class Game
 
   # Check if game has a winner
   def ends?
-    return true if @winner
     return true if turns > 9
+    return true if @winner
     false
   end
 

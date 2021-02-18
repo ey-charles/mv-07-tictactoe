@@ -43,60 +43,32 @@ p '2| - - - |'
 p '3| - - - |'
 p ' ________'
 
-
-# game.new_turn("Carlos", "A2")
-# game.new_turn("Camilo", "B3")
-# game.new_turn("Carlos", "A1")
-# game.new_turn("Camilo", "B1")
-# game.new_turn("Carlos", "A3")
-# game.show_board
-
-game = Game.new
-game.add_player(player_1_name, player_1_token)
-game.add_player(player_2_name, player_2_token)
-
 until game.ends?
-  valid_turn = false
+  game.players.each { |player|
 
-  until valid_turn
+    valid_turn = false
+
     puts "\n"
     p '-----------------'
     p "Turn #{game.turns}:"
-    p "Player: #{player_1_name}"
+    p "Player: #{player[1].name}"
     p '-----------------'
-    game.show_board
-    puts 'Choose your move:'
 
-    valid_turn = game.new_turn(player_1_name, gets.chomp)
+    until valid_turn
+      game.show_board
+      puts 'Choose your move:'
 
-    p "Invalid move!" unless valid_turn
+      valid_turn = game.new_turn(player[1].name, gets.chomp)
 
-    puts "\n"
-  end
+      puts "\nInvalid move! Try again" unless valid_turn
 
-  game.check_for_win
+      puts "\n"
+    end
 
-  break if game.ends?
+    game.check_for_win
 
-  valid_turn = false
-
-  until valid_turn
-    puts "\n"
-    p '-----------------'
-    p "Turn #{game.turns}:"
-    p "Player: #{player_2_name}"
-    p '-----------------'
-    game.show_board
-    puts 'Choose your move:'
-
-    valid_turn = game.new_turn(player_2_name, gets.chomp)
-
-    p "Invalid move!" unless valid_turn
-
-    puts "\n"
-  end
-
-  p game.check_for_win
+    break if game.ends?
+  }
 end
 
 if game.winner
@@ -105,3 +77,5 @@ else
   p "Draw :("
   p "Nobody won"
 end
+
+game.show_board
