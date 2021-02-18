@@ -4,6 +4,7 @@ require_relative "../lib/game"
 require_relative "../lib/player"
 
 game = Game.new
+
 game.add_player("Carlos", "X")
 game.add_player("Camilo", "O")
 

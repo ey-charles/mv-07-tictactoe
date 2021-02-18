@@ -10,10 +10,8 @@ class Game
   end
 
   def add_player(name, token)
-    if @players.length >= 2
-      p "Error! Game can only have two players"
-      return @players
-    end
+    # max. number of players is 2
+    return false if @players.length >= 2
 
     players[name] = Player.new(name, token) 
   end
