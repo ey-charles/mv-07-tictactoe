@@ -6,8 +6,10 @@ class Game
     @players = Hash.new
     @board = Board.new
     @winner = nil
-    @turns = 0
+    @turns = 1
   end
+
+  public
 
   def add_player(name, token)
     # max. number of players is 2
@@ -21,15 +23,25 @@ class Game
     @board.show_board
   end
 
+  # Executes a new turn by a player
+  # Returns:
+  # 
   def new_turn(player_name, position)
-    if @winner
-      p "No moves allowed. There's already a winner."
-      return false
-    end
+    return false unless valid_position?(position)
 
-    @winner = @board.set_cell(@players[player_name], position)
     @turns += 1
 
-    p "#{player_name} is the winner!" if @winner
+    @board.set_cell(@players[player_name], position)
+  end
+
+  private
+
+  def valid_position?(position)
+    return false unless position.is_a? String
+    return false unless position.length == 2
+    return false unless %w[A B C].any? { |column| position[0].include? column }
+    return false unless %w[1 2 3].any? { |row| position[1].include? row }
+    
+    true
   end
 end
