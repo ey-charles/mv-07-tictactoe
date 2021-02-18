@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-# frozen_string_literal: true
 
 p 'Welcome to Tic Tac Toe!'
 p 'Starting new game .  .  .'
