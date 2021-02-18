@@ -61,5 +61,4 @@ require_relative "../lib/player"
 game = Game.new
 game.add_player("carlos", "X")
 game.add_player("camilo", "O")
-
-p "Invalid move!" unless game.new_turn("carlos", "A6")
+game.new_turn("carlos", "A1")

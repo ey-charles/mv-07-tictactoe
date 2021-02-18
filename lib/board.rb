@@ -6,34 +6,34 @@ class Board
   end
 
   def create_grid
-    grid = {
-      "A1" => nil,
-      "A2" => nil,
-      "A3" => nil,
-      "B1" => nil,
-      "B2" => nil,
-      "B3" => nil,
-      "C1" => nil,
-      "C2" => nil,
-      "C3" => nil,
+    @grid = {
+      'A1' => nil, 'A2' => nil, 'A3' => nil,
+      'B1' => nil, 'B2' => nil, 'B3' => nil,
+      'C1' => nil, 'C2' => nil, 'C3' => nil
     }
   end
 
   def set_cell(player, cell_id)
-    unless @grid[cell_id].nil?
-      p "Invalid move to #{cell_id} by #{player.name}"
-      return false
-    end
+    return false unless valid_position?(cell_id)
 
     @grid[cell_id] = player.token
+    cell_id
+  end
 
-    p "#{player.name} marked the cell #{cell_id}: #{player.token}."
+  private
 
-    winner?
+  def valid_position?(position)
+    return false unless position.is_a? String
+    return false unless position.length == 2
+    return false unless %w[A B C].any? { |column| position[0].include? column }
+    return false unless %w[1 2 3].any? { |row| position[1].include? row }
+    return false unless @grid[position].nil?
+
+    true
   end
 
   def winner?
-    return check_horizontal_win? || check_vertical_win? || check_diagonal_win? ? true : false;
+    check_horizontal_win? || check_vertical_win? || check_diagonal_win?
   end
 
   public
@@ -60,12 +60,12 @@ class Board
     }
 
     # We have no winner if we get to this point
-    return false
+    false
   end
 
   def check_diagonal_win?
-    diag1 = @grid.slice("A1", "B2", "C3").values
-    diag2 = @grid.slice("C1", "B2", "A3").values
+    diag1 = @grid.slice('A1', 'B2', 'C3').values
+    diag2 = @grid.slice('C1', 'B2', 'A3').values
 
     return false unless diag1.all? || diag2.all?
 
