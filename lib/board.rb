@@ -5,19 +5,22 @@ class Board
     @grid = create_grid
   end
 
-  def create_grid
-    @grid = {
-      'A1' => nil, 'A2' => nil, 'A3' => nil,
-      'B1' => nil, 'B2' => nil, 'B3' => nil,
-      'C1' => nil, 'C2' => nil, 'C3' => nil
-    }
-  end
+  public
 
   def set_cell(player, cell_id)
     return false unless valid_position?(cell_id)
 
     @grid[cell_id] = player.token
-    cell_id
+
+    true
+  end
+
+  def show_board
+    %w[1 2 3].each { |i| p @grid.select { |k| k.include? i }.values }
+  end
+
+  def winner?
+    horizontal_win? || vertical_win? || diagonal_win?
   end
 
   private
@@ -32,38 +35,33 @@ class Board
     true
   end
 
-  def winner?
-    check_horizontal_win? || check_vertical_win? || check_diagonal_win?
+  def create_grid
+    @grid = {
+      'A1' => nil, 'A2' => nil, 'A3' => nil,
+      'B1' => nil, 'B2' => nil, 'B3' => nil,
+      'C1' => nil, 'C2' => nil, 'C3' => nil
+    }
   end
 
-  public
-
-  def show_board
-    %w[1 2 3].each { |i| p @grid.select { |k| k.include? i }.values }
+  def horizontal_win?
+    linear_win?(%w[1 2 3])
   end
 
-  private
-
-  def check_horizontal_win?
-    check_linear_win?(%w[1 2 3])
+  def vertical_win?
+    linear_win?(%w[A B C])
   end
 
-  def check_vertical_win?
-    check_linear_win?(%w[A B C])
-  end
-
-  def check_linear_win?(matrix)
+  def linear_win?(matrix)
     matrix.each { |i|
       vector = @grid.select { |k| k.include? i }.values
       next unless vector.all?
       return true if vector.all? { |element| element == vector[0] }
     }
 
-    # We have no winner if we get to this point
     false
   end
 
-  def check_diagonal_win?
+  def diagonal_win?
     diag1 = @grid.slice('A1', 'B2', 'C3').values
     diag2 = @grid.slice('C1', 'B2', 'A3').values
 
