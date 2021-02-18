@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 p 'Welcome to Tic Tac Toe!'
 p 'Starting new game .  .  .'
@@ -6,30 +7,30 @@ p 'Starting new game .  .  .'
 # initialize game
 p 'What\'s the name of Player 1?'
 player_1_name = gets.chomp
-player_1_token = "X"
+player_1_token = 'X'
 
 p 'What\'s the name of Player 2?'
 player_2_name = gets.chomp
-player_2_token = "O"
+player_2_token = 'O'
 puts "\n\n"
-p "-----------------"
-p "Start the game!"
-p "-----------------"
+p '-----------------'
+p 'Start the game!'
+p '-----------------'
 p "Player 1: #{player_1_name}"
 p "Token: #{player_1_token}"
-p "-----------------"
+p '-----------------'
 p "Player 2: #{player_2_name}"
 p "Token: #{player_2_token}"
-p "-----------------"
+p '-----------------'
 puts "\n\n"
 
 # game = Game.new
-p "   A B C"
-p " ________"
-p "1| - - - |"
-p "2| - - - |"
-p "3| - - - |"
-p " ________"
+p '   A B C'
+p ' ________'
+p '1| - - - |'
+p '2| - - - |'
+p '3| - - - |'
+p ' ________'
 
 #
 # game.show_board
