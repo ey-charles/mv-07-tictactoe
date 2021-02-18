@@ -62,7 +62,7 @@ puts "\n\n"
 
 p "Camilo\'s turn:"
 
-p 'Invalid move!' 
+p 'Invalid move!'
 p "Camilo\'s turn:"
 
 p '   A B C'
@@ -137,7 +137,7 @@ puts "\n\n"
 
 p "Camilo\'s turn:"
 
-p 'Invalid move!' 
+p 'Invalid move!'
 p "Camilo\'s turn:"
 
 p '   A B C'
