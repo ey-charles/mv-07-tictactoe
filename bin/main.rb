@@ -22,10 +22,10 @@ p '-----------------'
 p 'Start the game!'
 p '-----------------'
 p "Player 1: #{player_1_name}"
-p "Token: X"
+p 'Token: X'
 p '-----------------'
 p "Player 2: #{player_2_name}"
-p "Token: O"
+p 'Token: O'
 p '-----------------'
 puts "\n"
 
@@ -39,18 +39,17 @@ p ' ________'
 
 game_ends = false
 
-players = Array.new
+players = []
 players.push(player_1_name)
 players.push(player_2_name)
 
 until game_ends
-  players.each { |player|
-
+  players.each do |player|
     valid_turn = false
 
     puts "\n"
     p '-----------------'
-    p "Turn 2"
+    p 'Turn 2'
     p "Player: #{player}"
     p '-----------------'
 
@@ -61,7 +60,7 @@ until game_ends
 
       move = gets.chomp
 
-      valid_turn = true if move == "A2"
+      valid_turn = true if move == 'A2'
 
       puts "\nInvalid move! Try again" unless valid_turn
 
@@ -72,19 +71,19 @@ until game_ends
     # break if game_ends
 
     game_ends = true
-  }
+  end
 end
 
 game_winner = true
 
 if game_winner
-  p "We have a winner!!! :D"
+  p 'We have a winner!!! :D'
 else
-  p "Draw :("
-  p "Nobody won"
+  p 'Draw :('
+  p 'Nobody won'
 end
 
-#  game.show_board
+# game.show_board
 p 'Final board:'
 p '   A B C'
 p ' ________'
