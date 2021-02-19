@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Board
   attr_reader :grid
 
@@ -16,13 +18,13 @@ class Board
   def show_board
     board = ''
 
-    %w[1 2 3].each {|i|
+    %w[1 2 3].each do |i|
       board_row = @grid.select { |k| k.include? i }.values
 
-      board_row.each_with_index { |cell, i| board_row[i] = '_' if cell.nil?}
+      board_row.each_with_index { |cell, i| board_row[i] = '_' if cell.nil? }
 
-      board += "|" + board_row.join("-") + "|\n"
-    }
+      board += "|#{board_row.join('-')}|\n"
+    end
 
     board
   end

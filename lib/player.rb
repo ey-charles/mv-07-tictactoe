@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 class Player
-  attr_accessor :name
-  attr_accessor :token
+  attr_accessor :name, :token
 
   def initialize(name, token)
     @name = name
