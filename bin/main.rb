@@ -15,13 +15,13 @@ p 'What\'s the name of Player 1?'
 player_1_name = gets.chomp
 player_1_token = 'X'
 
-game.add_player(player_1_name, player_1_token);
+game.add_player(player_1_name, player_1_token)
 
 p 'What\'s the name of Player 2?'
 player_2_name = gets.chomp
 player_2_token = 'O'
 
-game.add_player(player_2_name, player_2_token);
+game.add_player(player_2_name, player_2_token)
 
 puts "\n\n"
 p '-----------------'
@@ -44,7 +44,7 @@ p '3| - - - |'
 p ' ________'
 
 until game.ends?
-  game.players.each { |player|
+  game.players.each do |player|
     valid_turn = false
 
     puts "\n"
@@ -67,7 +67,7 @@ until game.ends?
     game.check_for_win
 
     break if game.ends?
-  }
+  end
 end
 
 if game.winner

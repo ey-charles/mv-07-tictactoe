@@ -8,13 +8,11 @@ class Game
     @turns = 1
   end
 
-  public
-
   def add_player(name, token)
     # max. number of players is 2
     return false if @players.length >= 2
 
-    players[name] = Player.new(name, token) 
+    players[name] = Player.new(name, token)
   end
 
   def show_board
@@ -30,6 +28,7 @@ class Game
   def ends?
     return true if turns > 9
     return true if @winner
+
     false
   end
 
@@ -47,5 +46,4 @@ class Game
 
     false
   end
-
 end

@@ -5,8 +5,6 @@ class Board
     @grid = create_grid
   end
 
-  public
-
   def set_cell(player, cell_id)
     return false unless valid_position?(cell_id)
 
@@ -52,11 +50,11 @@ class Board
   end
 
   def linear_win?(matrix)
-    matrix.each { |i|
+    matrix.each do |i|
       vector = @grid.select { |k| k.include? i }.values
       next unless vector.all?
       return true if vector.all? { |element| element == vector[0] }
-    }
+    end
 
     false
   end
