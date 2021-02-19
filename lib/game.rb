@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 class Game
   attr_reader :players, :turns, :winner
