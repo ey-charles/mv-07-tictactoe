@@ -55,9 +55,10 @@ until game.ends?
 
     until valid_turn
       game.show_board
-      puts 'Choose your move:'
+      puts 'Choose your move, select the column (A, B, C) and row (1, 2, 3):'
+      puts 'For example: A2 or c3'
 
-      valid_turn = game.new_turn(player[1].name, gets.chomp)
+      valid_turn = game.new_turn(player[1].name, gets.chomp.upcase)
 
       puts "\nInvalid move! Try again" unless valid_turn
 
