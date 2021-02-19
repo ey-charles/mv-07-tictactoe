@@ -1,31 +1,37 @@
 #!/usr/bin/env ruby
+require_relative '../lib/board'
+require_relative '../lib/game'
+require_relative '../lib/player'
 
 p '------------------------'
 p 'Welcome to Tic Tac Toe!'
 p '------------------------'
 p 'Starting new game . . .'
 
-# game = Game.new
+# initialize game
+game = Game.new
 
 p 'What\'s the name of Player 1?'
 player_1_name = gets.chomp
+player_1_token = 'X'
 
-# game.add_player(player_1_name)
+game.add_player(player_1_name, player_1_token);
 
 p 'What\'s the name of Player 2?'
 player_2_name = gets.chomp
+player_2_token = 'O'
 
-# game.add_player(player_2_name)
+game.add_player(player_2_name, player_2_token);
 
 puts "\n\n"
 p '-----------------'
 p 'Start the game!'
 p '-----------------'
 p "Player 1: #{player_1_name}"
-p 'Token: X'
+p "Token: #{player_1_token}"
 p '-----------------'
 p "Player 2: #{player_2_name}"
-p 'Token: O'
+p "Token: #{player_2_token}"
 p '-----------------'
 puts "\n"
 
@@ -37,57 +43,38 @@ p '2| - - - |'
 p '3| - - - |'
 p ' ________'
 
-game_ends = false
-
-players = []
-players.push(player_1_name)
-players.push(player_2_name)
-
-until game_ends
-  players.each do |player|
+until game.ends?
+  game.players.each { |player|
     valid_turn = false
 
     puts "\n"
     p '-----------------'
-    p 'Turn 2'
-    p "Player: #{player}"
+    p "Turn #{game.turns}:"
+    p "Player: #{player[1].name}"
     p '-----------------'
 
     until valid_turn
-      # game.show_board
+      game.show_board
       puts 'Choose your move:'
-      puts "\n(Choose A2 to get out of loop)"
 
-      move = gets.chomp
-
-      valid_turn = true if move == 'A2'
+      valid_turn = game.new_turn(player[1].name, gets.chomp)
 
       puts "\nInvalid move! Try again" unless valid_turn
 
       puts "\n"
     end
 
-    # game.check_for_win
-    # break if game_ends
+    game.check_for_win
 
-    game_ends = true
-  end
+    break if game.ends?
+  }
 end
 
-game_winner = true
-
-if game_winner
+if game.winner
   p 'We have a winner!!! :D'
 else
   p 'Draw :('
   p 'Nobody won'
 end
 
-# game.show_board
-p 'Final board:'
-p '   A B C'
-p ' ________'
-p '1| X - - |'
-p '2| O X - |'
-p '3| O - X |'
-p ' ________'
+game.show_board
