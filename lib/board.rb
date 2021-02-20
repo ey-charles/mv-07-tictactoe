@@ -1,6 +1,4 @@
 class Board
-  attr_reader :grid
-
   def initialize
     @grid = create_grid
   end

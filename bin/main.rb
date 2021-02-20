@@ -10,16 +10,27 @@ p 'Starting new game . . .'
 
 # initialize game
 game = Game.new
+player_1_name = ''
+player_2_name = ''
 
-p 'What\'s the name of Player 1?'
-player_1_name = gets.chomp
-player_1_token = 'X'
+while player_1_name.empty?
+  puts "\n"
+  p 'What\'s the name of Player 1?'
+  player_1_name = gets.chomp
+  player_1_token = 'X'
+  p 'No name detected! Please input a valid name' if player_1_name.empty?
+end
 
 game.add_player(player_1_name, player_1_token)
 
-p 'What\'s the name of Player 2?'
-player_2_name = gets.chomp
-player_2_token = 'O'
+while player_2_name.empty? || player_2_name == player_1_name
+  puts "\n"
+  p 'What\'s the name of Player 2?'
+  player_2_name = gets.chomp
+  player_2_token = 'O'
+  p 'No name detected! Please input a valid name' if player_2_name.empty?
+  p 'Input a different name for Player 2!' if player_2_name == player_1_name
+end
 
 game.add_player(player_2_name, player_2_token)
 
@@ -66,6 +77,8 @@ until game.ends?
     end
 
     game.check_for_win
+
+    p "Player: #{player[1].name} won!" if game.winner
 
     break if game.ends?
   end

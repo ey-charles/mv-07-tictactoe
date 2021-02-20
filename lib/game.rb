@@ -32,10 +32,6 @@ class Game
     false
   end
 
-  def set_winner
-    @winner = true
-  end
-
   # Executes a new turn by a player
   # Returns: boolean
   def new_turn(player_name, position)
