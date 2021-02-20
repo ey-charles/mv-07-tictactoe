@@ -1,15 +1,16 @@
 #!/usr/bin/env ruby
+
 require_relative '../lib/board'
 require_relative '../lib/game'
 require_relative '../lib/player'
 
-p '------------------------'
-p 'Welcome to Tic Tac Toe!'
-p '------------------------'
-p 'Starting new game . . .'
+puts '------------------------'
+puts 'Welcome to Tic Tac Toe!'
+puts '------------------------'
+puts 'Starting new game . . .'
 
-# initialize game
 game = Game.new
+<<<<<<< HEAD
 player_1_name = ''
 player_2_name = ''
 
@@ -31,41 +32,55 @@ while player_2_name.empty? || player_2_name == player_1_name
   p 'No name detected! Please input a valid name' if player_2_name.empty?
   p 'Input a different name for Player 2!' if player_2_name == player_1_name
 end
+=======
+
+puts 'What\'s the name of Player 1?'
+player_1_name = gets.chomp
+player_1_token = 'X'
+
+game.add_player(player_1_name, player_1_token)
+
+puts 'What\'s the name of Player 2?'
+player_2_name = gets.chomp
+player_2_token = 'O'
+>>>>>>> bbc676ab5387ac7ac5fc964dc964ab63e0846b07
 
 game.add_player(player_2_name, player_2_token)
 
 puts "\n\n"
-p '-----------------'
-p 'Start the game!'
-p '-----------------'
-p "Player 1: #{player_1_name}"
-p "Token: #{player_1_token}"
-p '-----------------'
-p "Player 2: #{player_2_name}"
-p "Token: #{player_2_token}"
-p '-----------------'
+puts '-----------------'
+puts 'Start the game!'
+puts '-----------------'
+puts "Player 1: #{player_1_name}"
+puts "Token: #{player_1_token}"
+puts '-----------------'
+puts "Player 2: #{player_2_name}"
+puts "Token: #{player_2_token}"
+puts '-----------------'
 puts "\n"
 
-p 'New empty board:'
-p '   A B C'
-p ' ________'
-p '1| - - - |'
-p '2| - - - |'
-p '3| - - - |'
-p ' ________'
+puts "New empty board:\n"
+puts "   A B C\n"
+puts " ________\n"
+puts "1| - - - |\n"
+puts "2| - - - |\n"
+puts "3| - - - |\n"
+puts " ________\n"
 
 until game.ends?
   game.players.each do |player|
     valid_turn = false
 
     puts "\n"
-    p '-----------------'
-    p "Turn #{game.turns}:"
-    p "Player: #{player[1].name}"
-    p '-----------------'
+    puts '-----------------'
+    puts "Turn #{game.turns}:"
+    puts "Player: #{player[1].name}"
+    puts '-----------------'
+
+    puts 'This is the current board: '
+    puts game.show_board
 
     until valid_turn
-      game.show_board
       puts 'Choose your move, select the column (A, B, C) and row (1, 2, 3):'
       puts 'For example: A2 or c3'
 
@@ -85,10 +100,12 @@ until game.ends?
 end
 
 if game.winner
-  p 'We have a winner!!! :D'
+  puts 'We have a winner!!! :D'
+  puts "\nThis is the final board:"
+  puts game.show_board
 else
-  p 'Draw :('
-  p 'Nobody won'
+  puts 'Draw :('
+  puts 'Nobody won'
 end
 
 game.show_board

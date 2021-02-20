@@ -12,7 +12,17 @@ class Board
   end
 
   def show_board
-    %w[1 2 3].each { |i| p @grid.select { |k| k.include? i }.values }
+    board = ''
+
+    %w[1 2 3].each do |i|
+      board_row = @grid.select { |k| k.include? i }.values
+
+      board_row.each_with_index { |value, cell| board_row[cell] = '_' if value.nil? }
+
+      board += "|#{board_row.join('-')}|\n"
+    end
+
+    board
   end
 
   def winner?

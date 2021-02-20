@@ -9,14 +9,12 @@ class Game
   end
 
   def add_player(name, token)
-    # max. number of players is 2
     return false if @players.length >= 2
 
     players[name] = Player.new(name, token)
   end
 
   def show_board
-    p 'This is the current board:'
     @board.show_board
   end
 
@@ -24,7 +22,6 @@ class Game
     @winner = @board.winner?
   end
 
-  # Check if game has a winner
   def ends?
     return true if turns > 9
     return true if @winner
@@ -32,8 +29,15 @@ class Game
     false
   end
 
+<<<<<<< HEAD
   # Executes a new turn by a player
   # Returns: boolean
+=======
+  def set_winner
+    @winner = true
+  end
+
+>>>>>>> bbc676ab5387ac7ac5fc964dc964ab63e0846b07
   def new_turn(player_name, position)
     if @board.set_cell(@players[player_name], position)
       @turns += 1
