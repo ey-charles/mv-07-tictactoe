@@ -10,7 +10,6 @@ puts '------------------------'
 puts 'Starting new game . . .'
 
 game = Game.new
-<<<<<<< HEAD
 player_1_name = ''
 player_2_name = ''
 
@@ -32,18 +31,6 @@ while player_2_name.empty? || player_2_name == player_1_name
   p 'No name detected! Please input a valid name' if player_2_name.empty?
   p 'Input a different name for Player 2!' if player_2_name == player_1_name
 end
-=======
-
-puts 'What\'s the name of Player 1?'
-player_1_name = gets.chomp
-player_1_token = 'X'
-
-game.add_player(player_1_name, player_1_token)
-
-puts 'What\'s the name of Player 2?'
-player_2_name = gets.chomp
-player_2_token = 'O'
->>>>>>> bbc676ab5387ac7ac5fc964dc964ab63e0846b07
 
 game.add_player(player_2_name, player_2_token)
 
