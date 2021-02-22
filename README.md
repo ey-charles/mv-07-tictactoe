@@ -59,8 +59,8 @@ If no player achieves this after 9 turns, the game will end, and the end result 
 
 👤 **Juan Camilo Patiño**
 
-- GitHub: [@george-swift](github.com/george-swift)
-- Twitter: [@\_\_pragmaticdev](https://twitter.com/__pragmaticdev)
+- GitHub: [@george-swift](github.com/LoxiasCam)
+- Twitter: [@\_\_pragmaticdev](https://twitter.com/jcamilop96)
 
 👤 **Carlos Castillo**
 
