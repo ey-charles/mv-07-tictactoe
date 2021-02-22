@@ -36,7 +36,20 @@ Once Ruby is installed simply follow the instructions:
 - Choose name for Player 1
 - Choose name for Player 2
 
-Player 1
+Player 1 plays with the "X" sign.
+Player 2 plays with the "O" sign.
+
+Tha game works as a 3x3 grid with columna A, B, C, and rows 1, 2, 3. Each turn the player will choose a position.
+For example: A2, B3, A1, and so on.
+
+|   | A | B	| C	|
+|---|---|---|---|
+| 1 |   |  	|   |
+| 2 |   |   |   |
+| 3 |   |  	|   |
+
+The first player to complete a diagonal, horizontal, or vertical line wins.
+If no player achieves this after 9 turns, the game will end, and the end result is considered to be a Draw.
 
 ## Built With
 
